@@ -1,26 +1,34 @@
-import { useSelector } from 'react-redux';
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import './style.scss';
+import "./style.scss";
 
 const Menu = () => {
   const recipes = useSelector((state) => state.recipes.list);
   return (
-    
     <nav className="menu">
-      <a
-        className="menu-link menu-link--active"
-        href="/"
+      <NavLink
+        // className={({ isActive }) => (
+        //     isActive ? 'classe(s) CSS si URL du lien = URL barre d adresse' : 'classe(s) CSS si URL du lien != URL barre d adresse'
+        //   )}
+        //   to="/"
+        className={({ isActive }) =>
+          isActive ? "menu-link menu-link--active" : "menu-link"
+        }
+        to="/"
       >
         Accueil
-      </a>
+      </NavLink>
       {recipes.map((recipe) => (
-        <a
+        <NavLink
           key={recipe.id}
-          className="menu-link"
-          href={`/recipe/${recipe.slug}`}
+          className={({ isActive }) =>
+            isActive ? "menu-link menu-link--active" : "menu-link"
+          }
+          to={`/recipe/${recipe.slug}`}
         >
           {recipe.title}
-        </a>
+        </NavLink>
       ))}
     </nav>
   );

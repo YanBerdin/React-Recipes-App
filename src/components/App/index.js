@@ -1,13 +1,14 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Menu from 'src/components/Menu';
-import Home from 'src/components/Home';
-// import Recipe from 'src/components/Recipe';
-// import Error from 'src/components/Error';
+import Menu from "src/components/Menu";
+import Home from "src/components/Home";
+import Recipe from "src/components/Recipe";
+import Error from "src/components/Error";
 
-import Loading from './Loading';
+import Loading from "./Loading";
 
-import './style.scss';
+import "./style.scss";
+import { Routes, Route } from "react-router-dom";
 
 function App(props) {
   if (props.loading) {
@@ -16,9 +17,17 @@ function App(props) {
   return (
     <div className="app">
       <Menu />
-      <Home />
-      {/* <Recipe /> */}
-      {/* <Error /> */}
+
+      <Routes>
+        {/* <Home /> */}
+        <Route path="/" element={<Home />} />
+
+        {/* <Recipe /> */}
+        <Route path="/recipe/:name" element={<Recipe />} />
+
+        {/* <Error /> */}
+        <Route path="*" element={<Error />} />
+      </Routes>
     </div>
   );
 }

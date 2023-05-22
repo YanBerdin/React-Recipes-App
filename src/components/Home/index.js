@@ -7,6 +7,7 @@ import Content from 'src/components/Content';
 const Home = () => {
   const recipes = useSelector((state) => state.recipes.list);
   return (
+    
     <Page>
       <AppHeader />
       <Content
