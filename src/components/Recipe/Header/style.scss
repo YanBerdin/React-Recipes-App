@@ -1,0 +1,35 @@
+@use 'src/styles/vars';
+
+.presentation {
+  position: relative;
+  margin-bottom: vars.$gutter;
+  color: #fff;
+
+  &-image {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 60vh;
+    border-radius: 0 0 1rem 1rem;
+  }
+  
+  &-content {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: vars.$gutter;
+    padding: vars.$gutter;
+    text-align: center;
+    background: rgba(0,0,0,0.3);
+  }
+  
+  &-title {
+    font-size: 2em;
+  }
+  
+  &-infos {
+    letter-spacing: .05em;
+    font-size: .8em;
+    opacity: .7;
+  }
+}

@@ -1,0 +1,22 @@
+@use 'src/styles/vars';
+
+.ingredients {
+  margin: vars.$gutter 0; 
+}
+
+.ingredient {
+  border-bottom: 1px solid #ccc;
+  padding: vars.$halfGutter;
+
+  &:last-child {
+    border: none;
+  }
+  
+  &-quantity {
+    background-color: vars.$color;
+    color: #fff;
+    padding: .3em .6em;
+    border-radius: .3em;
+    display: inline-block;
+  }
+}

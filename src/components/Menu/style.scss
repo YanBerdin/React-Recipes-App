@@ -1,0 +1,34 @@
+@use 'sass:color';
+@use 'src/styles/vars';
+
+.menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: vars.$menuWidth;
+  padding: vars.$halfGutter 0;
+  background-color: color.scale(vars.$color, $lightness: -80%);
+  box-shadow: inset -20px 0 20px -20px rgba(0,0,0,.75);
+  height: 100vh;
+  
+  @media (max-width: vars.$small) {
+    width: vars.$smallMenuWidth;
+    font-size: .85em;
+  }
+
+  &-link {
+    display: block;
+    padding: vars.$halfGutter vars.$gutter;
+    transition: color .2s, box-shadow .4s;
+    color: rgba(255,255,255,.75);
+
+    &:hover:not(&--active) {
+      color: white;
+    }
+
+    &--active {
+      color: vars.$color;
+      box-shadow: inset -3px 0 0 vars.$color;
+    }
+  }
+}

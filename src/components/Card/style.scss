@@ -1,0 +1,43 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+@use 'sass:math';
+
+.card {
+  border-radius: 1rem;
+  border: 1px solid #ddd;
+  width: calc(50% - #{vars.$halfGutter});
+  margin-top: vars.$gutter;
+  overflow: hidden;
+  
+  @media (max-width: vars.$small) {
+    width: 100%;
+  }
+
+  &-content {
+    padding: vars.$halfGutter;
+  }
+
+  &-title {
+    font-size: 1.15em;
+    margin-bottom: .2em;
+  }
+
+  &-desc {
+    color: rgba(0,0,0,.4);
+    font-size: .8em;
+    margin-bottom: vars.$halfGutter;
+  }
+
+  &-link {
+    background-color: vars.$color;
+    color: white;
+    display: block;
+    text-align: center;
+    padding: vars.$halfGutter;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: color.scale(vars.$color, $lightness: -30%);
+    }
+  }
+}
