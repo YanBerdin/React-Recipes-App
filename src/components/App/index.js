@@ -23,7 +23,8 @@ function App(props) {
         <Route path="/" element={<Home />} />
 
         {/* <Recipe /> */}
-        <Route path="/recipe/:name" element={<Recipe />} />
+        {/* <Route path="/recipe/:name" element={<Recipe />} /> */}
+        <Route path="/recipe/:slug" element={<Recipe />} />
 
         {/* <Error /> */}
         <Route path="*" element={<Error />} />
