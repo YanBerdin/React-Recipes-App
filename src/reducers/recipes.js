@@ -1,8 +1,8 @@
-// On n'utilise plus le fichier data => Récuperer depuis l'API
 // import data from "src/data";
+// => Récuperé depuis l'API
 
 // import Action Creator dans Fichier recipe.js de l'Annuaire
-import { SET_RECIPES } from "../actions/recipes";
+import { SET_RECIPES } from '../actions/recipes';
 
 // Valeur par defaut de list => []
 export const initialState = {

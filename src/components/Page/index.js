@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 
-const Page = ({ children }) => (
-  <main className="page">
-    {children}
-  </main>
-);
+function Page({ children }) {
+  return (
+    <main className="page">
+      {children}
+    </main>
+  );
+}
 
 Page.propTypes = {
   children: PropTypes.node.isRequired,

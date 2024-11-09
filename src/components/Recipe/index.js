@@ -13,7 +13,6 @@ import Header from './Header';
 import Ingredients from './Ingredients';
 import Instructions from './Instructions';
 
-
 // Style
 import './style.scss';
 
@@ -24,7 +23,7 @@ function Recipe() {
   const recipe = useSelector((state) => findRecipe(state.recipes.list, slug));
 
   if (!recipe) {
-    return <Navigate to="/error" replace={true} />;
+    return <Navigate to="/error" replace />;
   }
   return (
     <Page>

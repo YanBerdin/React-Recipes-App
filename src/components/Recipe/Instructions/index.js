@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 // Imports locaux
 import './style.scss';
 
-const Instructions = ({ steps }) => (
-  <ol className="steps">
-    {steps.map((instruction) => (
-      <li key={instruction} className="step">
-        {instruction}
-      </li>
-    ))}
-  </ol>
-);
+function Instructions({ steps }) {
+  return (
+    <ol className="steps">
+      {steps.map((instruction) => (
+        <li key={instruction} className="step">
+          {instruction}
+        </li>
+      ))}
+    </ol>
+  );
+}
 
 // on valide nos props
 Instructions.propTypes = {

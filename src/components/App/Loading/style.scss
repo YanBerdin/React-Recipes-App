@@ -1,8 +1,8 @@
-@use 'src/styles/vars';
+@use "src/styles/vars";
 
 @keyframes fade {
   0% {
-    opacity: .5;
+    opacity: 0.5;
   }
   100% {
     opacity: 1;
@@ -34,14 +34,14 @@
   transform: translate(-50%, -50%);
   color: vars.$color;
   font-size: 2em;
-  animation: fade .75s infinite alternate;
+  animation: fade 0.75s infinite alternate;
 
   &::after {
     content: "";
     height: 30%;
     width: 100%;
     background-color: vars.$color;
-    opacity: .3;
+    opacity: 0.3;
     position: absolute;
     top: 70%;
     left: 0;

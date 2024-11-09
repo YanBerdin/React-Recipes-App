@@ -1,31 +1,28 @@
-import PropTypes from "prop-types";
+import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 
-import Menu from "src/components/Menu";
-import Home from "src/components/Home";
-import Recipe from "src/components/Recipe";
-import Error from "src/components/Error";
+import Menu from 'src/components/Menu';
+import Home from 'src/components/Home';
+import Recipe from 'src/components/Recipe';
+import Error from 'src/components/Error';
 
-import Loading from "./Loading";
+import './style.scss';
 
-import "./style.scss";
-
-import { Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
-import { setRecipes } from "../../actions/recipes";
+import PropTypes from 'prop-types';
 
 import axios from 'axios';
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
+import { setRecipes } from '../../actions/recipes';
+import Loading from './Loading';
 
 function App(props) {
-
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("1ere requete des recettes appelée");
-    axios.get("http://localhost:3001/recipes")
-    .then ((response) => {
-dispatch (setRecipes(response.data));
- });
+    // console.log('1ere requete des recettes appelée');
+    axios.get('http://localhost:3001/recipes').then((response) => {
+      dispatch(setRecipes(response.data));
+    });
   }, []);
 
   if (props.loading) {
