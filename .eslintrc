@@ -40,7 +40,8 @@
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "jsx-a11y/control-has-associated-label": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "react/function-component-definition": "on" // Allow arrow function
   },
   "settings": {
     "import/resolver": {

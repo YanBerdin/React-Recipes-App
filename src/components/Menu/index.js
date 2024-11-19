@@ -3,16 +3,11 @@ import { useSelector } from 'react-redux';
 
 import './style.scss';
 
-function Menu() {
+const Menu = () => {
   const recipes = useSelector((state) => state.recipes.list);
   return (
     <nav className="menu">
       <NavLink
-        // className={({ isActive }) => (
-        //     isActive ? 'classe(s) CSS si URL du lien = URL barre d adresse' :
-        // 'classe(s) CSS si URL du lien != URL barre d adresse'
-        //   )}
-        //   to="/"
         className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
         to="/"
       >

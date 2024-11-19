@@ -1,31 +1,31 @@
-import { Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
+import PropTypes from "prop-types";
+import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 
-import Menu from 'src/components/Menu';
-import Home from 'src/components/Home';
-import Recipe from 'src/components/Recipe';
-import Error from 'src/components/Error';
+import Menu from "src/components/Menu";
+import Home from "src/components/Home";
+import Recipe from "src/components/Recipe";
+import Error from "src/components/Error";
 
-import './style.scss';
+import "./style.scss";
 
-import PropTypes from 'prop-types';
-
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { setRecipes } from '../../actions/recipes';
-import Loading from './Loading';
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setRecipes } from "../../actions/recipes";
+import Loading from "./Loading";
 
 function App(props) {
   const dispatch = useDispatch();
+  const recipes = useSelector((state) => state.recipes.list);
 
   useEffect(() => {
     // console.log('1ere requete des recettes appelée');
-    axios.get('http://localhost:3001/recipes').then((response) => {
+    axios.get("http://localhost:3001/api/recipes").then((response) => {
       dispatch(setRecipes(response.data));
     });
   }, []);
 
-  if (props.loading) {
+  if (recipes.length === 0) {
     return <Loading />;
   }
   return (
@@ -37,7 +37,6 @@ function App(props) {
         <Route path="/" element={<Home />} />
 
         {/* <Recipe /> */}
-        {/* <Route path="/recipe/:name" element={<Recipe />} /> */}
         <Route path="/recipe/:slug" element={<Recipe />} />
 
         {/* <Error /> */}

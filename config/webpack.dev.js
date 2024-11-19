@@ -1,7 +1,7 @@
-const paths = require('./paths');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
+const paths = require('./paths');
+const common = require('./webpack.common');
 
 const port = 8080;
 
@@ -67,7 +67,7 @@ module.exports = merge(common, {
     historyApiFallback: true,
     open: false,
     compress: true,
-    hot: true,
+    // hot: true, // automatically applies HMR plugin
     port,
   },
 });
