@@ -1,0 +1,54 @@
+@use "src/styles/vars";
+
+.field {
+  margin: 0.3em 0.3em 0.3em 0;
+  position: relative;
+
+  &-input {
+    width: 100%;
+    padding: 0.7em;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 0.3em;
+    height: 2.5em;
+
+    &:focus {
+      border-color: vars.$color;
+
+      & + .field-label {
+        color: vars.$color;
+      }
+    }
+  }
+
+  &-label {
+    display: none;
+    position: absolute;
+    top: 0.2rem;
+    left: 0.7rem;
+    color: #999;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    animation: labelSlideUpAndShow 0.3s;
+  }
+
+  &--has-content {
+    .field-label {
+      display: block;
+    }
+    .field-input {
+      padding: 1.4em 0.7em 0.4em;
+    }
+  }
+}
+
+@keyframes labelSlideUpAndShow {
+  0% {
+    transform: translateY(1em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0em);
+    opacity: 1;
+  }
+}

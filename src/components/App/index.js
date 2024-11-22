@@ -19,7 +19,6 @@ function App(props) {
   const recipes = useSelector((state) => state.recipes.list);
 
   useEffect(() => {
-    // console.log('1ere requete des recettes appelée');
     axios.get("http://localhost:3001/api/recipes").then((response) => {
       dispatch(setRecipes(response.data)); // dispatch de l’intention d’action
     });

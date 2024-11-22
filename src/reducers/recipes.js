@@ -1,7 +1,7 @@
-// Attention : le reducer ne sait pas qu'il gère juste un compartiment et pas le state entier 
+// Attention : le reducer ne sait pas qu'il gère juste un compartiment et pas le state entier
 
 // import Action Creator dans fichier recipe.js de l'Annuaire
-import { SET_RECIPES } from '../actions/recipes';
+import { SET_RECIPES } from "../actions/recipes";
 
 // Valeur par defaut de list[] dans le State
 export const initialState = {

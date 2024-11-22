@@ -1,0 +1,28 @@
+@use "src/styles/vars";
+
+.login-form {
+  &-element {
+    display: flex;
+    align-items: center;
+  }
+
+  &-message {
+    margin: 0.3em 1em;
+  }
+
+  &-logged {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &-button {
+    font-size: 1em;
+    color: #fff;
+    background-color: vars.$color;
+    border-radius: 0.3em;
+    border: 0;
+    padding: 0.7em;
+    height: 2.5em;
+  }
+}
