@@ -19,7 +19,7 @@ function App(props) {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes.list);
 
-/*
+  /*
   useEffect(() => {
     axios.get("http://localhost:3001/api/recipes").then((response) => {
       dispatch(setRecipes(response.data)); // dispatch de l’intention d’action
@@ -74,8 +74,10 @@ App.propTypes = {
   loading: PropTypes.bool,
 };
 
-App.defaultProps = {
-  loading: false,
-};
+//? Support for defaultProps will be removed from function components in a future major release.
+//? Use JavaScript default parameters instead
+// App.defaultProps = {
+// loading: false,
+// };
 
 export default App;

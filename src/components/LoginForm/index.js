@@ -18,6 +18,7 @@ const LoginForm = ({
   handleLogout,
   isLogged,
   loggedMessage,
+  autoComplete,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -40,15 +41,16 @@ const LoginForm = ({
       )}
       {!isLogged && (
         <form
-          autoComplete="off"
           className="login-form-element"
           onSubmit={handleSubmit}
         >
           <Field
             name="email"
+            type="email"
             placeholder="Adresse Email"
             onChange={changeField}
             value={email}
+            autoComplete="email"
           />
           <Field
             name="password"
@@ -56,6 +58,7 @@ const LoginForm = ({
             placeholder="Mot de passe"
             onChange={changeField}
             value={password}
+            autoComplete="current-password"
           />
           <button type="submit" className="login-form-button">
             OK
@@ -89,9 +92,11 @@ LoginForm.propTypes = {
   loggedMessage: PropTypes.string,
 };
 
-LoginForm.defaultProps = {
-  isLogged: false,
-  loggedMessage: "Connecté",
-};
+//? Support for defaultProps will be removed from function components in a future major release.
+//? Use JavaScript default parameters instead
+// LoginForm.defaultProps = {
+// isLogged: false,
+// loggedMessage: "Connecté",
+//};
 
 export default LoginForm;

@@ -5,7 +5,14 @@ import PropTypes from "prop-types";
 import "./style.scss";
 
 // == Composant
-const Field = ({ value, type, name, placeholder, onChange }) => {
+const Field = ({
+  value,
+  type,
+  name,
+  placeholder,
+  onChange,
+  autoComplete,
+}) => {
   const handleChange = (evt) => {
     onChange(evt.target.value, name);
   };
@@ -24,6 +31,7 @@ const Field = ({ value, type, name, placeholder, onChange }) => {
         className="field-input"
         placeholder={placeholder}
         name={name}
+        autoComplete={autoComplete}
       />
 
       <label htmlFor={inputId} className="field-label">
@@ -39,13 +47,16 @@ Field.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  autoComplete: PropTypes.string,
 };
 
+//? Support for defaultProps will be removed from function components in a future major release.
+//? Use JavaScript default parameters instead
 // Valeurs par défaut pour les props
-Field.defaultProps = {
-  value: "",
-  type: "text",
-};
+// Field.defaultProps = {
+//  value: "",
+//  type: "text",
+// };
 
 // == Export
 export default Field;

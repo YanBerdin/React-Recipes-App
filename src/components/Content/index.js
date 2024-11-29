@@ -30,8 +30,8 @@ Content.propTypes = {
   ),
 };
 
-Content.defaultProps = {
-  recipes: null,
-};
+//Content.defaultProps = {
+// recipes: null,
+// };
 
 export default Content;
