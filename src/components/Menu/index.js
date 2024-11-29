@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import "./style.scss";
 
 const Menu = () => {
@@ -15,6 +14,16 @@ const Menu = () => {
       >
         Accueil
       </NavLink>
+
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "menu-link menu-link--active" : "menu-link"
+        }
+        to="/favorites"
+      >
+        Mes recettes préférées
+      </NavLink>
+
       {recipes.map((recipe) => (
         <NavLink
           key={recipe.id}

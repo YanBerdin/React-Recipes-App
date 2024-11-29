@@ -1,4 +1,4 @@
-import { CHANGE_LOGIN_FIELD, SAVE_LOGIN_SUCCESSFUL } from "../actions/user";
+import { CHANGE_LOGIN_FIELD, SAVE_LOGIN_SUCCESSFUL, SET_FAVORITES_RECIPES } from "../actions/user";
 
 export const initialState = {
   logged: false,
@@ -40,6 +40,13 @@ const reducer = (state = initialState, action = {}) => {
         email: "",
         password: "", //! sécurité : supprimer les identifiants du state
       };
+
+      case SET_FAVORITES_RECIPES:
+        return {
+          ...state,
+          favorites:
+            action.payload.favorites,
+        };
 
     default:
       return state;

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import Menu from "src/components/Menu";
 import Home from "src/components/Home";
 import Recipe from "src/components/Recipe";
 import Error from "src/components/Error";
+import Favorites from "src/components/Favorites";
 
 import "./style.scss";
 
@@ -18,6 +19,8 @@ import Loading from "./Loading";
 function App(props) {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes.list);
+  const favorites = useSelector((state) => state.user.favorites);
+  const logged = useSelector((state) => state.user.logged);
 
   /*
   useEffect(() => {
@@ -57,13 +60,12 @@ function App(props) {
       <Menu />
 
       <Routes>
-        {/* <Home /> */}
         <Route path="/" element={<Home />} />
 
-        {/* <Recipe /> */}
+        <Route path="/favorites" element={<Favorites />} />
+
         <Route path="/recipe/:slug" element={<Recipe />} />
 
-        {/* <Error /> */}
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
