@@ -1,11 +1,16 @@
-import { CHANGE_LOGIN_FIELD, SAVE_LOGIN_SUCCESSFUL, SET_FAVORITES_RECIPES } from "../actions/user";
+import {
+  CHANGE_LOGIN_FIELD,
+  SAVE_LOGIN_SUCCESSFUL,
+  SET_FAVORITES_RECIPES,
+} from "../actions/user";
 
 export const initialState = {
-  logged: false,
+  isLogged: false,
   email: "",
   password: "",
   nickname: "",
   token: null, // JWT
+  favoritesRecipes: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -34,19 +39,18 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_LOGIN_SUCCESSFUL:
       return {
         ...state,
-        logged: true,
+        isLogged: true,
         nickname: action.payload.nickname,
         token: action.payload.token,
         email: "",
         password: "", //! sécurité : supprimer les identifiants du state
       };
 
-      case SET_FAVORITES_RECIPES:
-        return {
-          ...state,
-          favorites:
-            action.payload.favorites,
-        };
+    case SET_FAVORITES_RECIPES: // action creator
+      return {
+        ...state,
+        favoritesRecipes: action.payload.favoritesRecipes,
+      };
 
     default:
       return state;

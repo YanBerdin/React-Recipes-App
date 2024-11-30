@@ -1,20 +1,26 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import Card from "src/components/Card";
+import "./style.scss";
 
-import Card from 'src/components/Card';
-
-import './style.scss';
-
-function Content({ title, text, recipes }) {
+function Content({ title, text, recipes, favoritesRecipes = [] }) {
+  console.log("favoritesRecipes", favoritesRecipes);
   return (
     <section className="content">
       <h1 className="content-title">{title}</h1>
       <p className="content-text">{text}</p>
       {recipes && (
-      <div className="content-list">
-        {recipes.map((recipe) => (
-          <Card key={recipe.id} {...recipe} />
-        ))}
-      </div>
+        <div className="content-list">
+          {recipes.map((recipe) => (
+            <Card key={recipe.id} {...recipe} />
+          ))}
+        </div>
+      )}
+      {favoritesRecipes && favoritesRecipes.length > 0 && (
+        <div className="content-list">
+          {favoritesRecipes.map((favoritesRecipe) => (
+            <Card key={favoritesRecipe.id} {...favoritesRecipe} />
+          ))}
+        </div>
       )}
     </section>
   );
@@ -26,7 +32,12 @@ Content.propTypes = {
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-    }),
+    })
+  ),
+  favoritesRecipes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
   ),
 };
 

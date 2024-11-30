@@ -20,17 +20,17 @@ import LoginForm from "src/components/LoginForm";
 import "./style.scss";
 
 import logo from "src/assets/logo.png";
-import { changeLoginField, saveLoginSuccessful } from "../../actions/user";
+import { changeLoginField, saveLoginSuccessful, setFavoritesRecipes } from "../../actions/user";
 
 const AppHeader = () => {
   // on a des reducers combinés (un state avec des tiroirs) => ne pas oublier le nom du tiroir
   const emailValue = useSelector((state) => state.user.email);
   const passwordValue = useSelector((state) => state.user.password);
-  const logged = useSelector((state) => state.user.logged);
+  const isLogged = useSelector((state) => state.user.isLogged);
   const nickname = useSelector((state) => state.user.nickname);
 
   const dispatch = useDispatch();
-
+/*
   // aller récupérer les recettes préférées de l'utilisateur
   function fetchFavoriteRecipes(jwt) {
     axios
@@ -56,7 +56,7 @@ const AppHeader = () => {
         // - ici on dispatch l'action
       });
   }
-
+*/
   return (
     <header className="header">
       <img src={logo} className="header-logo" alt="Logo oRecipes" />
@@ -80,7 +80,7 @@ const AppHeader = () => {
                 saveLoginSuccessful(response.data.pseudo, response.data.token)
               );
 
-              fetchFavoriteRecipes(response.data.token);
+              // fetchFavoriteRecipes(response.data.token);
             })
             .catch((error) => {
               alert("Mauvais identifiants");
@@ -91,7 +91,7 @@ const AppHeader = () => {
           console.log("handleLogout");
         }}
         loggedMessage={`Bienvenue ${nickname}`}
-        isLogged={logged}
+        isLogged={isLogged}
       />
     </header>
   );

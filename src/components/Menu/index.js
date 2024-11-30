@@ -4,6 +4,8 @@ import "./style.scss";
 
 const Menu = () => {
   const recipes = useSelector((state) => state.recipes.list);
+  const isLogged = useSelector((state) => state.user.isLogged);
+
   return (
     <nav className="menu">
       <NavLink
@@ -15,15 +17,17 @@ const Menu = () => {
         Accueil
       </NavLink>
 
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? "menu-link menu-link--active" : "menu-link"
-        }
-        to="/favorites"
-      >
-        Mes recettes préférées
-      </NavLink>
-
+      {isLogged && (
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "menu-link menu-link--active" : "menu-link"
+          }
+          to="/favorites"
+        >
+          Mes recettes préférées
+        </NavLink>
+      )}
+      
       {recipes.map((recipe) => (
         <NavLink
           key={recipe.id}

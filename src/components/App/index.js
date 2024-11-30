@@ -19,8 +19,7 @@ import Loading from "./Loading";
 function App(props) {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes.list);
-  const favorites = useSelector((state) => state.user.favorites);
-  const logged = useSelector((state) => state.user.logged);
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   /*
   useEffect(() => {

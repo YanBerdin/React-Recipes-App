@@ -34,17 +34,16 @@ export const saveLoginSuccessful = (nickname, token) => ({
   },
 });
 
-export const SET_FAVORITES_RECIPES = 'SET_FAVORITES_RECIPES';
+export const SET_FAVORITES_RECIPES = "SET_FAVORITES_RECIPES";
 /**
  * Définit les recettes favorites de l'utilisateur.
  *
- * @param {Array} favoritesRecipes - Les recettes favorites de l'utilisateur.
+ * @param {Array} favorites - Les recettes favorites de l'utilisateur reçues de l'API.
  * @returns {Object} - L'action de définition des recettes favorites.
  */
-export const setFavoritesRecipes = (favoritesRecipes) => ({
+export const setFavoritesRecipes = (favorites) => ({
   type: SET_FAVORITES_RECIPES,
   payload: {
-    favorites:
-      favoritesRecipes,
+    favoritesRecipes: favorites, // données à transmettre au reducer
   },
 });
