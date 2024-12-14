@@ -2,6 +2,7 @@ import {
   CHANGE_LOGIN_FIELD,
   SAVE_LOGIN_SUCCESSFUL,
   SET_FAVORITES_RECIPES,
+  LOGOUT,
 } from "../actions/user";
 
 export const initialState = {
@@ -44,6 +45,14 @@ const reducer = (state = initialState, action = {}) => {
         token: action.payload.token,
         email: "",
         password: "", //! sécurité : supprimer les identifiants du state
+      };
+
+    case LOGOUT:
+      return {
+        ...state,
+        isLogged: false,
+        nickname: "",
+        token: "",
       };
 
     case SET_FAVORITES_RECIPES: // action creator

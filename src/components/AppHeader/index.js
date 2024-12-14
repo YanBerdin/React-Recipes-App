@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 // import axios from "axios";
 import api from "src/api";
@@ -60,7 +61,7 @@ const AppHeader = () => {
         email={emailValue}
         password={passwordValue}
         changeField={(newValue, identifier) => {
-          // console.log(`changeField: newValue=${newValue}, identifier=${identifier}`);
+          // console.log(`changeField: newValue=${newValue}, identifier=${identifier}`);//TODO : à supprimer
           dispatch(changeLoginField(newValue, identifier));
         }}
         handleLogin={() => {
@@ -77,11 +78,6 @@ const AppHeader = () => {
                 sessionStorage.setItem("token", response.data.token);
                 sessionStorage.setItem("nickname", response.data.pseudo);
                 console.log(nickname); //TODO : à supprimer
-                /*
-                if (response.data.token) {
-                  sessionStorage.setItem("token", response.data.token);
-                }
-                */
                 dispatch(
                   saveLoginSuccessful(response.data.pseudo, response.data.token)
                 );
@@ -95,10 +91,10 @@ const AppHeader = () => {
             });
         }}
         handleLogout={() => {
-          sessionStorage.removeItem("token");
           sessionStorage.removeItem("nickname");
-          dispatch(saveLoginSuccessful("", null));
-          navigate("/");
+          sessionStorage.removeItem("token");
+          dispatch({ type: "LOGOUT" });
+          navigate("/", { replace: true }); // Replace the current entry in the history stack
           console.log("handleLogout"); //TODO : à supprimer
         }}
         loggedMessage={`Bienvenue ${nickname}`}
@@ -109,5 +105,15 @@ const AppHeader = () => {
 };
 
 // TODO : quand on est connecté, compléter le message de bienvenue avec le prénom de l'utilisateur
+
+AppHeader.propTypes = {
+  email: PropTypes.string,
+  password: PropTypes.string,
+  changeField: PropTypes.func,
+  handleLogin: PropTypes.func,
+  handleLogout: PropTypes.func,
+  isLogged: PropTypes.bool,
+  loggedMessage: PropTypes.string,
+};
 
 export default AppHeader;

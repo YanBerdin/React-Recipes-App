@@ -62,7 +62,7 @@ function Favorites() {
       <Content
         title="Mes recettes préférées"
         text="Lorem ipsum dolor sit amet."
-        favoritesRecipes={Array.isArray(isArrayfavoritesRecipes)}
+        favoritesRecipes={favoritesRecipes}
       />
     </Page>
   );

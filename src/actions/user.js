@@ -47,3 +47,19 @@ export const setFavoritesRecipes = (favorites) => ({
     favoritesRecipes: favorites, // données à transmettre au reducer
   },
 });
+
+export const LOGOUT = "LOGOUT";
+/**
+ * Déconnecte l'utilisateur.
+ *
+ * @returns {Object} - L'action de déconnexion.
+ */
+export const logout = () => ({
+  type: LOGOUT,
+  payload: {
+    payload: {
+      nickname: "",
+      token: "",
+    },
+  },
+});
