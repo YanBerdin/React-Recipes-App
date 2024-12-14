@@ -1,9 +1,9 @@
-# Welcome to Recipes 👋
+# Welcome to Recipes 🍽️
 
 > Recipes is a website project dedicated to culinary recipes. Powered by Express for the API, React and SCSS for the front-end to offer a user-friendly experience and connection management with JWT token and axios interceptors.
 
 ---
-📦 React Modele
+⚛️ React Modele
 
 Bienvenue dans ce modèle/template de projet React !
 
@@ -13,9 +13,14 @@ Bienvenue dans ce modèle/template de projet React !
 - Utilitaires
 - Dépendances
 - Scripts
-- Prérequis
 
 ---
+
+## Prérequis
+
+- Assurez-vous que Node.js et Yarn sont installés sur votre système.
+- Clone, installation et démarrage de [l’API Recipes]( <https://github.com/YanBerdin/Express-Recipes-API>)
+- Documentation sur <http://localhost:3001>
 
 ## Install
 
