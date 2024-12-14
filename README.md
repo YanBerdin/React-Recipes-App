@@ -171,7 +171,8 @@ Transpilation ES6/JSX -> ES5.
 ---
 
 Scripts
--------
+
+---
 
 ```sh
 # Avec yarn
@@ -189,8 +190,6 @@ npm run {script}
 - `clean:all`: Supprime `dist/`, `node_modules/` et les fichiers `lock`.
 
 ---
-
-Prérequis (déjà présents sur la VM)
 
 ---
 
