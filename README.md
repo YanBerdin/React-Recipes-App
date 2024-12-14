@@ -1,4 +1,6 @@
-# oRecipes
+# Welcome to Recipes 👋
+
+> Recipes is a website project dedicated to culinary recipes. Powered by Express for the API, React and SCSS for the front-end to offer a user-friendly experience and connection management with JWT token and axios interceptors.
 
 ---
 📦 React Modele
@@ -15,19 +17,23 @@ Bienvenue dans ce modèle/template de projet React !
 
 ---
 
-Première utilisation
+## Install
+
+- installe les dépendances du projet
 
 ```sh
-# installe les dépendances du projet
-yarn
-
-# lance le serveur de developpement
-yarn start 
-
-# rdv sur http://localhost:8080/
+yarn install
 ```
 
----
+## Usage
+
+- lance le serveur de developpement
+
+```sh
+yarn run start
+```
+
+- rdv sur <http://localhost:8080/>
 
 Build du projet
 
@@ -285,3 +291,16 @@ Suivre <https://classic.yarnpkg.com/en/docs/install/> en fonction de votre OS
 ---
 
 !['résultat'](./resultat.png)
+
+## Author
+
+👤 **Yan**
+
+- Github: [@YanBerdin](https://github.com/YanBerdin)
+- LinkedIn: [@yan-berdin](https://linkedin.com/in/yan-berdin)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+---
