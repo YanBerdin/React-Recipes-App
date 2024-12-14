@@ -56,7 +56,7 @@ function App(props) {
     };
   }, [dispatch]);
 
-  if (recipes.length === 0) {
+  if (!recipes?.length) { // if recipes.length === 0
     return <Loading />;
   }
   return (
