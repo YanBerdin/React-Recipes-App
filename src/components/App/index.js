@@ -18,6 +18,8 @@ import { saveLoginSuccessful } from "../../actions/user";
 
 import Loading from "./Loading";
 
+import useAuth from "src/hooks/useAuth";
+
 function App(props) {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes.list);
@@ -31,6 +33,9 @@ function App(props) {
   }, []);
 */
 
+
+  /*
+  // => useAuth.js
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     const nickname = sessionStorage.getItem("nickname");
@@ -39,6 +44,8 @@ function App(props) {
       dispatch(saveLoginSuccessful(nickname, token));
     }
   }, [dispatch]);
+*/
+useAuth();
 
   // https://developer.mozilla.org/en-US/docs/Web/API/AbortController
   useEffect(() => {

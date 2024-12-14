@@ -27,29 +27,34 @@ function Favorites() {
 
   // https://developer.mozilla.org/en-US/docs/Web/API/AbortController
   useEffect(() => {
-    console.log("Effet exécuté"); //TODO: à supprimer
-    const abortController = new AbortController();
-    const fetchFavoritesRecipes = async () => {
-      try {
-        const response = await api.get("http://localhost:3001/api/favorites", {
-          headers: {
-            Authorization: `Bearer ${token}`, // JWT
-          },
-          signal: abortController.signal, // Passer le signal d'abandon à la requête
-        });
-        console.log(response); //TODO: à supprimer
-        dispatch(setFavoritesRecipes(response.data.favorites)); // dispatch de l’intention d’action
-      } catch (error) {
-        console.error("Erreur de récupération des recettes", error);
-      }
-    };
-    fetchFavoritesRecipes();
-    // Cleanup
-    return () => {
-      abortController.abort();
-      console.log("Cleanup exécutée"); //TODO: à supprimer
-    };
-  }, []);
+    if (isLogged) {
+      console.log("Effet exécuté"); //TODO: à supprimer
+      const abortController = new AbortController();
+      const fetchFavoritesRecipes = async () => {
+        try {
+          const response = await api.get(
+            "http://localhost:3001/api/favorites",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`, // JWT
+              },
+              signal: abortController.signal, // Passer le signal d'abandon à la requête
+            }
+          );
+          console.log(response); //TODO: à supprimer
+          dispatch(setFavoritesRecipes(response.data.favorites)); // dispatch de l’intention d’action
+        } catch (error) {
+          console.error("Erreur de récupération des recettes", error);
+        }
+      };
+      fetchFavoritesRecipes();
+      // Cleanup
+      return () => {
+        abortController.abort();
+        console.log("Cleanup exécutée"); //TODO: à supprimer
+      };
+    }
+  }, [isLogged, token, dispatch]);
 
   return (
     <Page>
@@ -57,7 +62,7 @@ function Favorites() {
       <Content
         title="Mes recettes préférées"
         text="Lorem ipsum dolor sit amet."
-        favoritesRecipes={favoritesRecipes}
+        favoritesRecipes={Array.isArray(isArrayfavoritesRecipes)}
       />
     </Page>
   );
