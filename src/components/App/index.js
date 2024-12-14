@@ -17,57 +17,44 @@ import { setRecipes } from "../../actions/recipes";
 import { saveLoginSuccessful } from "../../actions/user";
 
 import Loading from "./Loading";
-
 import useAuth from "src/hooks/useAuth";
+import { fetchRecipes } from "src/api/recipes";
 
 function App(props) {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes.list);
   const isLogged = useSelector((state) => state.user.isLogged);
 
-  /*
-  useEffect(() => {
-    axios.get("http://localhost:3001/api/recipes").then((response) => {
-      dispatch(setRecipes(response.data)); // dispatch de l’intention d’action
-    });
-  }, []);
-*/
+  useAuth();
 
-
-  /*
-  // => useAuth.js
-  useEffect(() => {
-    const token = sessionStorage.getItem("token");
-    const nickname = sessionStorage.getItem("nickname");
-
-    if (token && nickname) {
-      dispatch(saveLoginSuccessful(nickname, token));
-    }
-  }, [dispatch]);
-*/
-useAuth();
-
-  // https://developer.mozilla.org/en-US/docs/Web/API/AbortController
+  //* https://developer.mozilla.org/en-US/docs/Web/API/AbortController
   useEffect(() => {
     console.log("Effet exécuté"); //TODO: à supprimer
     const abortController = new AbortController();
+    /*
     const fetchRecipes = async () => {
       try {
         const response = await api.get("/recipes", {
           signal: abortController.signal, // Passer le signal d'abandon à la requête
         });
-        dispatch(setRecipes(response.data)); // dispatch de l’intention d’action
+    */
+    const loadRecipes = async () => {
+      try {
+        const recipesData = await fetchRecipes(abortController.signal);
+        dispatch(setRecipes(recipesData));
       } catch (error) {
         console.error("Erreur de récupération des recettes", error); //TODO: à supprimer
       }
     };
-    fetchRecipes();
+    // fetchRecipes();
+    loadRecipes();
+
     // Cleanup
     return () => {
       abortController.abort();
       console.log("Cleanup exécutée"); //TODO: à supprimer
     };
-  }, []);
+  }, [dispatch]);
 
   if (recipes.length === 0) {
     return <Loading />;
