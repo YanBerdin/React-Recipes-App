@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import api from "src/api";
 import { useDispatch } from "react-redux";
 import { setFavoritesRecipes } from "src/actions/user";
 
@@ -30,15 +31,12 @@ function Favorites() {
     const abortController = new AbortController();
     const fetchFavoritesRecipes = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3001/api/favorites",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`, // JWT
-            },
-            signal: abortController.signal, // Passer le signal d'abandon à la requête
-          }
-        );
+        const response = await api.get("http://localhost:3001/api/favorites", {
+          headers: {
+            Authorization: `Bearer ${token}`, // JWT
+          },
+          signal: abortController.signal, // Passer le signal d'abandon à la requête
+        });
         console.log(response); //TODO: à supprimer
         dispatch(setFavoritesRecipes(response.data.favorites)); // dispatch de l’intention d’action
       } catch (error) {

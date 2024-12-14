@@ -1,36 +1,31 @@
-/*
-import "./style.scss";
-import logo from "src/assets/logo.png";
-
-const AppHeader = () => (
-  <header className="header">
-    <img src={logo} className="header-logo" alt="Logo oRecipes" />
-  </header>
-);
-
-export default AppHeader;
-*/
-
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-import axios from "axios";
-
+// import axios from "axios";
+import api from "src/api";
 import LoginForm from "src/components/LoginForm";
 
 import "./style.scss";
 
 import logo from "src/assets/logo.png";
-import { changeLoginField, saveLoginSuccessful, setFavoritesRecipes } from "../../actions/user";
+import {
+  changeLoginField,
+  saveLoginSuccessful,
+  setFavoritesRecipes,
+} from "../../actions/user";
 
 const AppHeader = () => {
-  // on a des reducers combinés (un state avec des tiroirs) => ne pas oublier le nom du tiroir
+  // Reducers combinés (un state avec des 'compartiments') => ne pas oublier le nom du 'compartiments'
   const emailValue = useSelector((state) => state.user.email);
   const passwordValue = useSelector((state) => state.user.password);
   const isLogged = useSelector((state) => state.user.isLogged);
+  console.log(isLogged);
   const nickname = useSelector((state) => state.user.nickname);
 
   const dispatch = useDispatch();
-/*
+  const navigate = useNavigate();
+  /*
   // aller récupérer les recettes préférées de l'utilisateur
   function fetchFavoriteRecipes(jwt) {
     axios
@@ -57,6 +52,7 @@ const AppHeader = () => {
       });
   }
 */
+
   return (
     <header className="header">
       <img src={logo} className="header-logo" alt="Logo oRecipes" />
@@ -70,25 +66,40 @@ const AppHeader = () => {
         handleLogin={() => {
           console.log("handleLogin"); //TODO : à supprimer
           // on valide les infos auprès du back-end
-          axios
-            .post("http://localhost:3001/api/login", {
+          api
+            .post("/login", {
               email: emailValue,
               password: passwordValue,
             })
             .then((response) => {
-              dispatch(
-                saveLoginSuccessful(response.data.pseudo, response.data.token)
-              );
-
-              // fetchFavoriteRecipes(response.data.token);
+              if (response.status === 200) {
+                console.log(emailValue, passwordValue); //TODO : à supprimer
+                sessionStorage.setItem("token", response.data.token);
+                sessionStorage.setItem("nickname", response.data.pseudo);
+                console.log(nickname); //TODO : à supprimer
+                /*
+                if (response.data.token) {
+                  sessionStorage.setItem("token", response.data.token);
+                }
+                */
+                dispatch(
+                  saveLoginSuccessful(response.data.pseudo, response.data.token)
+                );
+              } else {
+                alert("Identifiants incorrects. Veuillez réessayer.");
+              }
             })
             .catch((error) => {
-              alert("Mauvais identifiants");
+              alert("Mauvais identifiants.");
               console.log(error);
             });
         }}
         handleLogout={() => {
-          console.log("handleLogout");
+          sessionStorage.removeItem("token");
+          sessionStorage.removeItem("nickname");
+          dispatch(saveLoginSuccessful("", null));
+          navigate("/");
+          console.log("handleLogout"); //TODO : à supprimer
         }}
         loggedMessage={`Bienvenue ${nickname}`}
         isLogged={isLogged}
