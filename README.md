@@ -178,15 +178,16 @@ Voici les scripts disponibles dans le fichier `package.json` :
 
 ## **Auteur**
 
-👤 **Votre Nom**
+👤 **Yan Berdin**
 
-- Github: [@YanBerdin](https://github.com/YanBerdin)
-- LinkedIn: [@yan-berdin](https://linkedin.com/in/yan-berdin) 
+- Website: [@yanberdin.com](<https://www.yanberdin.com>)
+- Github: [@Yan{GitHub}](https://github.com/YanBerdin)
+- LinkedIn: [@Yan{LinkedIn}](https://www.linkedin.com/in/yan-berdin)
 
 ---
 
 ## **Support**
 
-Si ce projet vous a aidé ou inspiré, donnez-lui une ⭐️ sur GitHub !  
+Give a ⭐️ if this project helped you!
 
 ---
